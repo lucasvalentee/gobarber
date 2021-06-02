@@ -1,1 +1,3 @@
-# Aplicativo GoBarber desenvolvido durante o curso GoStack
+# GoBarber
+
+Aplicativo GoBarber desenvolvido durante o curso GoStack
