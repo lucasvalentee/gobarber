@@ -12,24 +12,20 @@ const usersRouter = Router();
 const upload = multer(uploadConfig);
 
 usersRouter.post('/', async (request, response) => {
-    try {
-        const { name, email, password } = request.body;
+    const { name, email, password } = request.body;
 
-        const createUser = new CreateUserService();
+    const createUser = new CreateUserService();
 
-        const user = await createUser.execute({
-            name,
-            password,
-            email,
-        });
+    const user = await createUser.execute({
+        name,
+        password,
+        email,
+    });
 
-        // @ts-expect-error -> Não pode retornar a senha do usuário na requisição.
-        delete user.password;
+    // @ts-expect-error -> Não pode retornar a senha do usuário na requisição.
+    delete user.password;
 
-        return response.json(user);
-    } catch ({ message }) {
-        return response.status(400).json({ message });
-    }
+    return response.json(user);
 });
 
 usersRouter.patch(
@@ -37,21 +33,17 @@ usersRouter.patch(
     ensureAuthenticated,
     upload.single('avatar'),
     async (request, response) => {
-        try {
-            const updateUserAvatar = new UpdateUserAvatarService();
+        const updateUserAvatar = new UpdateUserAvatarService();
 
-            const user = await updateUserAvatar.execute({
-                user_id: request.user.id,
-                avatarFilename: request?.file?.filename,
-            });
+        const user = await updateUserAvatar.execute({
+            user_id: request.user.id,
+            avatarFilename: request?.file?.filename,
+        });
 
-            // @ts-expect-error -> Não pode retornar a senha do usuário na requisição.
-            delete user.password;
+        // @ts-expect-error -> Não pode retornar a senha do usuário na requisição.
+        delete user.password;
 
-            return response.json(user);
-        } catch ({ message }) {
-            return response.status(400).json({ message });
-        }
+        return response.json(user);
     },
 );
 
