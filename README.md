@@ -1,6 +1,6 @@
-# GoBarber | GoStack
+# GoBarber | Backend
 
-GoBarber application developed in the GoStack course (in progress).
+Backend of GoBarber application developed in the GoStack course.
 
 ## Author
 
