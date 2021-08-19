@@ -1,6 +1,6 @@
 # GoBarber | Backend
 
-Backend of GoBarber application developed in the GoStack course.
+Back-end of the GoBarber app, which consists of an app for managing barber shop appointments.
 
 ## Author
 
